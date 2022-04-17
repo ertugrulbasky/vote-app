@@ -23,7 +23,7 @@ export function* fetchQuestion() {
 
 export function* createQuestion(action) {
     try {
-        const data = yield call(axios.request, {method:"POST",url: `/questions`,data:action.data});
+        yield call(axios.request, {method:"POST",url: `/questions`,data:action.data});
         yield fetchQuestions()
         generalSuccess()
     }catch (e) {
@@ -33,7 +33,7 @@ export function* createQuestion(action) {
 
 export function* voteQuestion(action) {
     try {
-        const data = yield call(axios.request, {method:"POST",url: `${action.data.url}`,data:action.data});
+        yield call(axios.request, {method:"POST",url: `${action.data.url}`,data:action.data});
         yield fetchQuestions()
         generalSuccess()
     }catch (e) {
